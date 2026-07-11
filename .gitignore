@@ -1,0 +1,22 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# Whisper model cache (downloaded at runtime, don't commit)
+*.pt
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+
+# Local run artifacts
+/tmp_clips/
+*.mp4
+*.ass
+*.part

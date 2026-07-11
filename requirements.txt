@@ -1,0 +1,5 @@
+streamlit>=1.35
+yt-dlp>=2024.8.6
+openai-whisper>=20231117
+torch>=2.2
+ffmpeg-python>=0.2.0
