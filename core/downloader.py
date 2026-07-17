@@ -14,6 +14,14 @@ def download_video(url: str, out_dir: str) -> dict:
         "merge_output_format": "mp4",
         "quiet": True,
         "no_warnings": True,
+        # YouTube's default "web" client sometimes throws
+        # "The page needs to be reloaded" due to bot-verification changes.
+        # android/ios clients usually sidestep it.
+        "extractor_args": {
+            "youtube": {
+                "player_client": ["android", "ios", "web"],
+            }
+        },
     }
 
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:

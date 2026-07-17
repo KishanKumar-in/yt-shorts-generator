@@ -69,6 +69,17 @@ if info and transcript:
             else:
                 segments = segmenter.simple_segments(transcript, max_len=max_len, target_count=clip_count)
 
+            if len(segments) < clip_count:
+                segments = segmenter.fill_to_target(
+                    segments, info["duration"], clip_count, max_len=max_len
+                )
+                if len(segments) < clip_count:
+                    st.caption(
+                        f"Note: only {len(segments)} clip(s) fit given the video length "
+                        f"and max clip length — reduce max clip length or pick a shorter "
+                        f"section to get more."
+                    )
+
         out_dir = os.path.join(WORKDIR, "clips")
         results = []
         progress = st.progress(0.0, text="Rendering clips...")

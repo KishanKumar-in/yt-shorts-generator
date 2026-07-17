@@ -42,7 +42,7 @@ A 10-minute video produces roughly 8-9 clips by default (tunable).
 
 brew install ffmpeg python@3.11
 
-git clone https://github.com/<KishanKumar-in>/yt-shorts-generator.git
+git clone https://github.com/<your-username>/yt-shorts-generator.git
 cd yt-shorts-generator
 python3.11 -m venv venv
 source venv/bin/activate
@@ -64,7 +64,7 @@ pip install -r requirements.txt
 Then in PowerShell (or Git Bash):
 
 ```powershell
-git clone https://github.com/<KishanKumar-in>/yt-shorts-generator.git
+git clone https://github.com/<your-username>/yt-shorts-generator.git
 cd yt-shorts-generator
 python -m venv venv
 venv\Scripts\activate
@@ -77,7 +77,7 @@ pip install -r requirements.txt
 sudo apt update
 sudo apt install -y python3 python3-venv python3-pip ffmpeg git
 
-git clone https://github.com/<KishanKumar-in>/yt-shorts-generator.git
+git clone https://github.com/<your-username>/yt-shorts-generator.git
 cd yt-shorts-generator
 python3 -m venv venv
 source venv/bin/activate
@@ -167,6 +167,24 @@ yt-shorts-generator/
 ├── LICENSE
 └── README.md
 ```
+
+## Changelog
+
+### v1.1.0
+- **Fixed:** clip count getting stuck around 2 clips regardless of the
+  requested count. Root cause: sentence detection (used to find valid clip
+  boundaries) had no length cap, so long rambling stretches of speech
+  without a hard punctuation stop (common in tutorials/vlogs) became a
+  single unusably long "sentence," collapsing the pool of valid clip
+  candidates. Fixed by capping sentence length during detection and adding
+  a guaranteed even-split fallback that tops up to the exact requested
+  clip count regardless of transcript structure.
+
+### v1.0.0
+- Initial release: YouTube download (yt-dlp), local Whisper transcription,
+  Smart/Simple clip selection, vertical 9:16 crop with blurred background.
+- Burned-in captions were included in an early build but removed for
+  reliability — see Known limitations below.
 
 ## License
 
